@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>ChainCacao – Traçabilité blockchain cacao Togo | LaunchPad</title>
-  <!-- Google Fonts & Font Awesome 6 (gratuit) -->
+  <!-- Google Fonts & Lucide Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * {
       margin: 0;
@@ -16,7 +16,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #FEF9F0;
+      background: #E8F5E9;
       color: #2C2B28;
       line-height: 1.5;
       scroll-behavior: smooth;
@@ -28,9 +28,8 @@
       padding: 0 24px;
     }
 
-    /* header */
     header {
-      background: #1E3A2F;
+      background: #1B5E20;
       color: white;
       padding: 16px 0;
       position: sticky;
@@ -44,12 +43,36 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    .logo h1 {
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      background: #F4C542;
+      border-radius: 60px;
+      padding: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: #1B5E20;
+      stroke-width: 1.8;
+    }
+    .lo{
+      margin-bottom: -13px;
+      width: 50px;
+      height: 50px;
+    }
+    .logo-text h1 {
       font-size: 1.7rem;
       font-weight: 800;
       letter-spacing: -0.5px;
     }
-    .logo p {
+    .logo-text p {
       font-size: 0.8rem;
       opacity: 0.8;
     }
@@ -59,6 +82,9 @@
       margin-left: 28px;
       font-weight: 500;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .nav-links a:hover {
       color: #F4C542;
@@ -77,7 +103,9 @@
       font-weight: 700;
       cursor: pointer;
       transition: 0.2s;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
     }
     .btn-primary:hover {
@@ -93,6 +121,9 @@
       font-weight: 600;
       text-decoration: none;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn-secondary:hover {
       background: #C97E2C20;
@@ -106,6 +137,9 @@
       font-weight: 800;
       margin-bottom: 16px;
       color: #1E3A2F;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
     .section-sub {
       font-size: 1.2rem;
@@ -113,7 +147,6 @@
       margin-bottom: 48px;
       max-width: 720px;
     }
-    /* cartes stats avec icônes */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -130,12 +163,11 @@
       transition: transform 0.2s;
     }
     .stat-card:hover { transform: translateY(-4px); }
-    .stat-icon {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #C97E2C, #F4C542);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .stat-icon svg {
+      width: 48px;
+      height: 48px;
+      stroke: #C97E2C;
+      stroke-width: 1.5;
       margin-bottom: 12px;
     }
     .stat-number {
@@ -149,6 +181,10 @@
       padding: 20px;
       border-radius: 20px;
       margin: 24px 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .steps {
       display: flex;
@@ -164,15 +200,13 @@
       border: 1px solid #E9DFD2;
       transition: all 0.2s;
     }
-    .step i {
-      font-size: 2.5rem;
-      background: linear-gradient(145deg, #C97E2C, #E6A157);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .step svg {
+      width: 42px;
+      height: 42px;
       margin-bottom: 16px;
+      stroke: #C97E2C;
+      stroke-width: 1.7;
     }
-    /* maquettes */
     .mockups-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -207,6 +241,19 @@
       font-size: 0.85rem;
       border: 1px solid #DDD2C2;
     }
+    .mockup-screen svg {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+    button svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
     .arch-diagram {
       background: #2C2B28;
       color: white;
@@ -228,6 +275,9 @@
       padding: 10px 20px;
       border-radius: 60px;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .team-grid {
       display: grid;
@@ -250,21 +300,44 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 16px;
-      font-size: 2.5rem;
-      color: #A5631F;
+    }
+    .avatar svg {
+      width: 52px;
+      height: 52px;
+      stroke: #A5631F;
+      stroke-width: 1.5;
     }
     footer {
-      background: #1E3A2F;
+      background: #1B5E20;
       color: #E9DFD2;
       padding: 48px 0 32px;
+    }
+    footer svg {
+      stroke: #E9DFD2;
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     @media (max-width: 780px) {
       .header-flex { flex-direction: column; gap: 12px; }
       .nav-links a { margin: 0 12px; }
       .section-title { font-size: 1.8rem; }
     }
-    .icon-glow {
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    .inline-icon {
+      display: inline-flex;
+      vertical-align: middle;
+      margin-right: 6px;
     }
   </style>
 </head>
@@ -272,234 +345,250 @@
 <header>
   <div class="container header-flex">
     <div class="logo">
-      <h1><i class="fas fa-leaf" style="color:#F4C542;"></i> ChainCacao</h1>
-      <p>LaunchPad · MIABE Hackathon 2026</p>
+      <div class="logo-text">
+        <h1><img src="/logo.png" alt="logo" class="lo">ChainCacao</h1>
+        <p>LaunchPad · MIABE Hackathon 2026</p>
+      </div>
     </div>
     <div class="nav-links">
-      <a href="#probleme"><i class="fas fa-chart-line"></i> Problème</a>
-      <a href="#solution"><i class="fas fa-lightbulb"></i> Solution</a>
-      <a href="#maquettes"><i class="fas fa-mobile-alt"></i> Interfaces</a>
-      <a href="#blockchain"><i class="fas fa-link"></i> Blockchain</a>
-      <a href="#equipe"><i class="fas fa-users"></i> Équipe</a>
-      <a href="#" class="btn-outline-light"><i class="fas fa-play"></i> Démo</a>
+      <a href="#probleme"><i data-lucide="trending-up"></i> Problème</a>
+      <a href="#solution"><i data-lucide="lightbulb"></i> Solution</a>
+      <a href="#maquettes"><i data-lucide="smartphone"></i> Interfaces</a>
+      <a href="#blockchain"><i data-lucide="link"></i> Blockchain</a>
+      <a href="#equipe"><i data-lucide="users"></i> Équipe</a>
+      <a href="#" class="btn-outline-light"><i data-lucide="play"></i> Démo</a>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- Hero -->
   <section style="padding-top: 48px;">
     <div class="container">
       <div style="max-width: 800px;">
-        <span style="background:#F4C54220; padding:6px 18px; border-radius:40px; font-weight:600;"><i class="fas fa-check-circle"></i> 🇹🇬 ODD 1 · 2 · 8 · 12</span>
+        <span style="background:#F4C54220; padding:6px 18px; border-radius:40px; font-weight:600; display:inline-flex; align-items:center; gap:8px;"><i data-lucide="check-circle"></i> 🇹🇬 ODD 1 · 2 · 8 · 12</span>
         <h1 style="font-size: 3.2rem; font-weight: 800; margin: 20px 0 16px; color:#1E3A2F;">De la ferme à l’export, <br>chaque lot devient certifiable.</h1>
-        <p style="font-size: 1.3rem; color: #3A3A37; margin-bottom: 32px;"><i class="fas fa-qrcode"></i> ChainCacao sécurise la traçabilité du cacao togolais sur blockchain — conforme EUDR, accessible aux 40 000 familles.</p>
-        <a href="#solution" class="btn-primary" style="margin-right: 16px;"><i class="fas fa-rocket"></i> Découvrir la solution</a>
-        <a href="#blockchain" class="btn-secondary"><i class="fas fa-cube"></i> Architecture blockchain</a>
+        <p style="font-size: 1.3rem; color: #3A3A37; margin-bottom: 32px;"><i data-lucide="qrcode"></i> ChainCacao sécurise la traçabilité du cacao togolais sur blockchain — conforme EUDR, accessible aux 40 000 familles.</p>
+        <a href="#solution" class="btn-primary" style="margin-right: 16px;"><i data-lucide="rocket"></i> Découvrir la solution</a>
+        <a href="#blockchain" class="btn-secondary"><i data-lucide="cube"></i> Architecture blockchain</a>
       </div>
     </div>
   </section>
 
-  <!-- PROBLÈME avec données chiffrées et icônes -->
   <section id="probleme">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-triangle-exclamation"></i> Un cacao d’excellence… invisible</h2>
+      <h2 class="section-title"><i data-lucide="alert-triangle"></i> Un cacao d’excellence… invisible</h2>
       <p class="section-sub">Entre la parcelle et le port de Lomé, 4 à 6 intermédiaires non tracés bloquent l’accès aux marchés premium et menacent l’exportation vers l’Europe.</p>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-families"></i></div><div class="stat-number">40 000</div><div>familles dépendent du café-cacao au Togo</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-simple"></i></div><div class="stat-number">15–25%</div><div>seulement de la valeur finale perçue par l'agriculteur</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="stat-number">30–40M USD</div><div>de pertes annuelles (fraudes sur pesées)</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-certificate"></i></div><div class="stat-number">&lt;5%</div><div>des exportations certifiées bio/Fairtrade</div></div>
+        <div class="stat-card"><div class="stat-icon"><i data-lucide="users"></i></div><div class="stat-number">40 000</div><div>familles dépendent du café-cacao au Togo</div></div>
+        <div class="stat-card"><div class="stat-icon"><i data-lucide="bar-chart-2"></i></div><div class="stat-number">15–25%</div><div>seulement de la valeur finale perçue par l'agriculteur</div></div>
+        <div class="stat-card"><div class="stat-icon"><i data-lucide="hand-coins"></i></div><div class="stat-number">30–40M USD</div><div>de pertes annuelles (fraudes sur pesées)</div></div>
+        <div class="stat-card"><div class="stat-icon"><i data-lucide="award"></i></div><div class="stat-number">&lt;5%</div><div>des exportations certifiées bio/Fairtrade</div></div>
       </div>
       <div class="badge-eudr">
-        <i class="fas fa-gavel" style="font-size: 1.8rem; margin-right: 12px; color:#D32F2F;"></i> 
-        <strong>⚠️ Règlement EUDR (entré en vigueur 2025) :</strong> tout importateur européen doit prouver l’absence de déforestation via des coordonnées GPS précises. Sans traçabilité infalsifiable, le Togo risque d’être exclu du premier marché d’exportation.
+        <i data-lucide="gavel" style="width:32px; height:32px;"></i>
+        <strong>Règlement EUDR (entré en vigueur 2025) :</strong> tout importateur européen doit prouver l’absence de déforestation via des coordonnées GPS précises. Sans traçabilité infalsifiable, le Togo risque d’être exclu du premier marché d’exportation.
       </div>
     </div>
   </section>
 
-  <!-- SOLUTION -->
   <section id="solution">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-cubes"></i> ChainCacao : la preuve de traçabilité que l’Europe exige</h2>
+      <h2 class="section-title"><i data-lucide="cubes"></i> ChainCacao : la preuve de traçabilité que l’Europe exige</h2>
       <p class="section-sub">Une plateforme blockchain qui transforme chaque lot en actif numérique vérifiable, de la récolte à l’exportateur.</p>
       <div class="steps">
-        <div class="step"><i class="fas fa-map-marker-alt"></i><h3>1. Enregistrement</h3><p>GPS, poids, espèce, date – signé par l’agriculteur ou la coopérative. Données immuables sur la blockchain.</p></div>
-        <div class="step"><i class="fas fa-exchange-alt"></i><h3>2. Transferts traçés</h3><p>Chaque changement de propriétaire enregistre une transaction cryptographique. Historique infalsifiable.</p></div>
-        <div class="step"><i class="fas fa-qrcode"></i><h3>3. Vérification QR</h3><p>Scanner un QR code pour consulter tout le cycle de vie du lot – sans compte requis.</p></div>
-        <div class="step"><i class="fas fa-leaf"></i><h3>4. Conformité EUDR</h3><p>Génération automatique d’une preuve géographique, éligible aux certifications Fairtrade, bio, Rainforest Alliance.</p></div>
+        <div class="step"><i data-lucide="map-pin"></i><h3>1. Enregistrement</h3><p>GPS, poids, espèce, date – signé par l’agriculteur ou la coopérative. Données immuables sur la blockchain.</p></div>
+        <div class="step"><i data-lucide="arrow-left-right"></i><h3>2. Transferts tracés</h3><p>Chaque changement de propriétaire enregistre une transaction cryptographique. Historique infalsifiable.</p></div>
+        <div class="step"><i data-lucide="scan-qr-code"></i><h3>3. Vérification QR</h3><p>Scanner un QR code pour consulter tout le cycle de vie du lot – sans compte requis.</p></div>
+        <div class="step"><i data-lucide="leaf"></i><h3>4. Conformité EUDR</h3><p>Génération automatique d’une preuve géographique, éligible aux certifications Fairtrade, bio, Rainforest Alliance.</p></div>
       </div>
       <div style="background: #E9DFD2; border-radius: 28px; padding: 28px; margin-top: 20px;">
-        <h3><i class="fas fa-database" style="color:#C97E2C;"></i> Pourquoi la blockchain plutôt qu’une base de données classique ?</h3>
+        <h3><i data-lucide="database"></i> Pourquoi la blockchain plutôt qu’une base de données classique ?</h3>
         <p>Une base de données centrale peut être modifiée par un administrateur ou compromise. La blockchain (Polygon) est un registre distribué et immuable : chaque transaction est horodatée, signée et partagée entre tous les acteurs. Un importateur européen ou un certificateur peut auditer directement la chaîne sans intermédiaire de confiance. L’immuabilité garantit qu’aucun acteur ne peut réécrire l’origine d’un lot après coup — un prérequis pour l’EUDR.</p>
       </div>
     </div>
   </section>
 
-  <!-- MAQUETTES VISUELLES -->
   <section id="maquettes">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-paintbrush-fine"></i> Interfaces dédiées à chaque acteur</h2>
+      <h2 class="section-title"><i data-lucide="paintbrush"></i> Interfaces dédiées à chaque acteur</h2>
       <p class="section-sub">Maquettes fonctionnelles (Phase 1) – Expérience mobile & web pour une adoption terrain.</p>
       <div class="mockups-row">
         <div class="mockup-card">
-          <div class="mockup-header"><i class="fas fa-tractor fa-lg"></i> Agriculteur / Coopérative</div>
-          <div class="mockup-body">
-            <div class="mockup-screen">
-              <i class="fas fa-plus-circle" style="color:#C97E2C;"></i> <strong>Nouveau lot</strong><br>
-              📍 GPS: 6.221°N, 1.215°E<br>
-              ⚖️ Poids: 245 kg<br>
-              🌿 Espèce: Forastero<br>
-              📅 Récolte: 12/04/2026<br>
-              <button style="background:#C97E2C; color:white; border:none; border-radius:40px; padding:6px 12px; margin-top:8px;"><i class="fas fa-link"></i> Enregistrer sur blockchain →</button>
-              <div style="font-size:12px; margin-top:8px;">✅ Hash: 0x7f3e...c91a</div>
-            </div>
-          </div>
+          <div class="mockup-header"><i data-lucide="tractor"></i> Agriculteur / Coopérative</div>
+          <div class="mockup-body"><div class="mockup-screen">
+            <i data-lucide="plus-circle"></i> <strong>Nouveau lot</strong><br>
+            <i data-lucide="map-pin"></i> GPS: 6.221°N, 1.215°E<br>
+            <i data-lucide="weight"></i> Poids: 245 kg<br>
+            <i data-lucide="sprout"></i> Espèce: Forastero<br>
+            <i data-lucide="calendar"></i> Récolte: 12/04/2026<br>
+            <button style="background:#C97E2C; color:white; border:none; border-radius:40px; padding:6px 12px; margin-top:8px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="link"></i> Enregistrer sur blockchain →</button>
+            <div style="font-size:12px; margin-top:8px;"><i data-lucide="check-circle"></i> Hash: 0x7f3e...c91a</div>
+          </div></div>
         </div>
         <div class="mockup-card">
-          <div class="mockup-header"><i class="fas fa-handshake"></i> Coopérative</div>
-          <div class="mockup-body">
-            <div class="mockup-screen">
-              <i class="fas fa-list-ul"></i> <strong>Lots entrants</strong><br>
-              Lot #CC-1024 • 450 kg • GPS vérifié<br>
-              <span style="color:green;"><i class="fas fa-arrow-left"></i> Transfert reçu de Kossi A.</span><br>
-              ➡️ Transférer à Transformateur<br>
-              <input placeholder="Adresse destinataire" style="width:100%; margin:6px 0;"><br>
-              <button style="background:#1E3A2F; color:white; border:none; border-radius:40px; padding:6px;"><i class="fas fa-signature"></i> Signer & Transférer</button>
-            </div>
-          </div>
+          <div class="mockup-header"><i data-lucide="handshake"></i> Coopérative</div>
+          <div class="mockup-body"><div class="mockup-screen">
+            <i data-lucide="list"></i> <strong>Lots entrants</strong><br>
+            Lot #CC-1024 • 450 kg • GPS vérifié<br>
+            <span style="color:green;"><i data-lucide="arrow-left"></i> Transfert reçu de Kossi A.</span><br>
+            <i data-lucide="arrow-right"></i> Transférer à Transformateur<br>
+            <input placeholder="Adresse destinataire" style="width:100%; margin:6px 0;"><br>
+            <button style="background:#1E3A2F; color:white; border:none; border-radius:40px; padding:6px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="signature"></i> Signer & Transférer</button>
+          </div></div>
         </div>
         <div class="mockup-card">
-          <div class="mockup-header"><i class="fas fa-search"></i> Vérificateur (Certification / EUDR)</div>
-          <div class="mockup-body">
-            <div class="mockup-screen">
-              <i class="fas fa-qrcode"></i> <strong>Scanner un QR lot</strong><br>
-              <div style="background:#DDD; width:80px; height:80px; margin:8px auto; display:flex; align-items:center; justify-content:center; border-radius:16px;"><i class="fas fa-camera" style="font-size:2rem;"></i></div>
-              <p><strong>Lot #CC-0891</strong><br>Origine: Village de Badou<br>Parcours: Ferme → Coop → Export<br>🌍 Preuve GPS: ✅ Non déforestée<br>Conforme EUDR: ✔️</p>
-            </div>
-          </div>
+          <div class="mockup-header"><i data-lucide="search"></i> Vérificateur (Certification / EUDR)</div>
+          <div class="mockup-body"><div class="mockup-screen">
+            <i data-lucide="qrcode"></i> <strong>Scanner un QR lot</strong><br>
+            <div style="background:#DDD; width:80px; height:80px; margin:8px auto; display:flex; align-items:center; justify-content:center; border-radius:16px;"><i data-lucide="camera" style="width:32px; height:32px;"></i></div>
+            <p><strong>Lot #CC-0891</strong><br>Origine: Village de Badou<br>Parcours: Ferme → Coop → Export<br><i data-lucide="map-pin"></i> Preuve GPS: <i data-lucide="check-circle"></i> Non déforestée<br>Conforme EUDR: <i data-lucide="check-circle"></i></p>
+          </div></div>
         </div>
         <div class="mockup-card">
-          <div class="mockup-header"><i class="fas fa-ship"></i> Exportateur</div>
-          <div class="mockup-body">
-            <div class="mockup-screen">
-              <i class="fas fa-file-certificate"></i> <strong>Certificat d’export</strong><br>
-              Lot finalisé: 12 tonnes – Certificat EUDR généré.<br>
-              <i class="fas fa-download"></i> Télécharger rapport traçabilité<br>
-              <button style="background:#C97E2C; border-radius:40px; border:none; color:white; padding:6px 12px;"><i class="fas fa-qrcode"></i> Générer QR export →</button>
-            </div>
-          </div>
+          <div class="mockup-header"><i data-lucide="ship"></i> Exportateur</div>
+          <div class="mockup-body"><div class="mockup-screen">
+            <i data-lucide="file-check"></i> <strong>Certificat d’export</strong><br>
+            Lot finalisé: 12 tonnes – Certificat EUDR généré.<br>
+            <i data-lucide="download"></i> Télécharger rapport traçabilité<br>
+            <button style="background:#C97E2C; border-radius:40px; border:none; color:white; padding:6px 12px; margin-top:8px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="qrcode"></i> Générer QR export →</button>
+          </div></div>
         </div>
       </div>
-      <p class="section-sub" style="margin-top: 28px;"><i class="fas fa-mobile-alt"></i> Application mobile terrain (React Native / PWA) : saisie hors-ligne, synchronisation blockchain via Polygon.</p>
+      <p class="section-sub" style="margin-top: 28px;"><i data-lucide="smartphone"></i> Application mobile terrain (React Native / PWA) : saisie hors-ligne, synchronisation blockchain via Polygon.</p>
     </div>
   </section>
 
-  <!-- ARCHITECTURE BLOCKCHAIN + SCHÉMA -->
   <section id="blockchain">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-microchip"></i> Architecture blockchain : scalabilité & souveraineté</h2>
+      <h2 class="section-title"><i data-lucide="microchip"></i> Architecture blockchain : scalabilité & souveraineté</h2>
       <p class="section-sub">Choix technique, données on/off chain, et schéma fonctionnel.</p>
-      
       <div class="arch-diagram">
         <div class="arch-flow">
-          <span class="arch-node"><i class="fas fa-tractor"></i> Agriculteur</span> <i class="fas fa-arrow-right"></i>
-          <span class="arch-node"><i class="fas fa-cube"></i> Polygon Blockchain</span> <i class="fas fa-arrow-right"></i>
-          <span class="arch-node"><i class="fas fa-building"></i> Coopérative</span> <i class="fas fa-arrow-right"></i>
-          <span class="arch-node"><i class="fas fa-industry"></i> Transformateur</span> <i class="fas fa-arrow-right"></i>
-          <span class="arch-node"><i class="fas fa-box"></i> Exportateur</span> <i class="fas fa-arrow-right"></i>
-          <span class="arch-node"><i class="fas fa-globe"></i> QR / EUDR</span>
+          <span class="arch-node"><i data-lucide="tractor"></i> Agriculteur</span> <i data-lucide="arrow-right"></i>
+          <span class="arch-node"><i data-lucide="cube"></i> Polygon Blockchain</span> <i data-lucide="arrow-right"></i>
+          <span class="arch-node"><i data-lucide="building"></i> Coopérative</span> <i data-lucide="arrow-right"></i>
+          <span class="arch-node"><i data-lucide="factory"></i> Transformateur</span> <i data-lucide="arrow-right"></i>
+          <span class="arch-node"><i data-lucide="package"></i> Exportateur</span> <i data-lucide="arrow-right"></i>
+          <span class="arch-node"><i data-lucide="globe"></i> QR / EUDR</span>
         </div>
-        <p style="margin-top: 24px; font-size: 0.9rem;">Chaque transfert = transaction signée + mise à jour du registre immuable.</p>
+        <p style="margin-top: 24px;">Chaque transfert = transaction signée + mise à jour du registre immuable.</p>
       </div>
-
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 28px; margin: 32px 0;">
-        <div style="background: white; border-radius: 28px; padding: 24px;">
-          <i class="fas fa-link" style="font-size: 2rem; color:#C97E2C;"></i>
-          <h3>🔐 Données on-chain (Polygon)</h3>
-          <ul style="margin-top: 12px; list-style: none;">
-            <li><i class="fas fa-hashtag"></i> Hash unique du lot</li>
-            <li><i class="fas fa-map-pin"></i> Coordonnées GPS</li>
-            <li><i class="fas fa-weight-hanging"></i> Poids / espèce</li>
-            <li><i class="fas fa-id-card"></i> Identifiant acteur + signature</li>
-            <li><i class="fas fa-clock"></i> Horodatage transaction</li>
-          </ul>
-        </div>
-        <div style="background: white; border-radius: 28px; padding: 24px;">
-          <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color:#C97E2C;"></i>
-          <h3>📎 Données off-chain</h3>
-          <ul style="margin-top: 12px; list-style: none;">
-            <li><i class="fas fa-image"></i> Photos de récolte (IPFS)</li>
-            <li><i class="fas fa-file-pdf"></i> Certificats PDF (Fairtrade)</li>
-            <li><i class="fas fa-lock"></i> Données perso agriculteur (DB chiffrée)</li>
-            <li><i class="fas fa-link"></i> Liée au hash on-chain</li>
-          </ul>
-        </div>
-        <div style="background: white; border-radius: 28px; padding: 24px;">
-          <i class="fas fa-chart-line" style="font-size: 2rem; color:#C97E2C;"></i>
-          <h3>⚡ Scalabilité & choix blockchain</h3>
-          <p><strong>Polygon (Proof-of-Stake sidechain)</strong> – coûts de transaction infimes (~0,001 $), finalité rapide, compatible Ethereum. Permet d’enregistrer des milliers de lots par jour sans frais prohibitifs. Alternative Hyperledger Fabric pour consortium si les coopératives préfèrent un réseau privé, mais Polygon assure transparence publique et interopérabilité avec les importateurs européens.</p>
-        </div>
+        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="link" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="lock"></i> Données on-chain (Polygon)</h3><ul><li><i data-lucide="hash"></i> Hash unique du lot</li><li><i data-lucide="map-pin"></i> Coordonnées GPS</li><li><i data-lucide="weight"></i> Poids / espèce</li><li><i data-lucide="id-card"></i> Identifiant acteur + signature</li><li><i data-lucide="clock"></i> Horodatage transaction</li></ul></div>
+        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="cloud-upload" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="paperclip"></i> Données off-chain</h3><ul><li><i data-lucide="image"></i> Photos de récolte (IPFS)</li><li><i data-lucide="file-text"></i> Certificats PDF (Fairtrade)</li><li><i data-lucide="lock"></i> Données perso agriculteur (DB chiffrée)</li><li><i data-lucide="link"></i> Liée au hash on-chain</li></ul></div>
+        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="trending-up" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="zap"></i> Scalabilité & choix blockchain</h3><p><strong>Polygon (Proof-of-Stake sidechain)</strong> – coûts de transaction infimes (~0,001 $), finalité rapide, compatible Ethereum. Permet d’enregistrer des milliers de lots par jour sans frais prohibitifs. Alternative Hyperledger Fabric pour consortium si les coopératives préfèrent un réseau privé, mais Polygon assure transparence publique et interopérabilité avec les importateurs européens.</p></div>
       </div>
-      <div style="background:#F4C54210; border-radius: 28px; padding: 24px;">
-        <i class="fas fa-shield-alt" style="font-size: 1.6rem;"></i> <strong>Pourquoi l’immuabilité est cruciale ?</strong> La modification d’une transaction passée nécessiterait de recalculer tous les blocs suivants et de contrôler plus de 50% du réseau – infaisable pour des acteurs malveillants. Ainsi, l’exportateur peut prouver sans conteste l’origine du lot devant les douanes européennes.
-      </div>
+      <div style="background:#F4C54210; border-radius: 28px; padding: 24px;"><i data-lucide="shield" style="width:28px; height:28px;"></i> <strong>Pourquoi l’immuabilité est cruciale ?</strong> La modification d’une transaction passée nécessiterait de recalculer tous les blocs suivants et de contrôler plus de 50% du réseau – infaisable pour des acteurs malveillants. Ainsi, l’exportateur peut prouver sans conteste l’origine du lot devant les douanes européennes.</div>
     </div>
   </section>
 
-  <!-- IMPACT ODD -->
   <section>
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-chart-line"></i> Impact mesurable – ODD 1,2,8,12</h2>
+      <h2 class="section-title"><i data-lucide="chart-line"></i> Impact mesurable – ODD 1,2,8,12</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between;">
-        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i class="fas fa-chart-simple fa-2x" style="color:#C97E2C;"></i> <strong>Économique</strong><br>Maintien des exportations UE, réduction des fraudes à la pesée, accès aux premiums (+30% revenu).</div>
-        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i class="fas fa-users fa-2x" style="color:#C97E2C;"></i> <strong>Social</strong><br>Les 40 000 familles connaissent la valeur réelle de leur récolte – pouvoir de négociation accru.</div>
-        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i class="fas fa-tree fa-2x" style="color:#C97E2C;"></i> <strong>Environnemental</strong><br>Preuve de non-déforestation exigée par l’EUDR, incitation à préserver les forêts togolaises.</div>
+        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i data-lucide="bar-chart-2" style="width:32px; height:32px; color:#C97E2C;"></i><strong> Économique</strong><br>Maintien des exportations UE, réduction des fraudes à la pesée, accès aux premiums (+30% revenu).</div>
+        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i data-lucide="users" style="width:32px; height:32px; color:#C97E2C;"></i><strong> Social</strong><br>Les 40 000 familles connaissent la valeur réelle de leur récolte – pouvoir de négociation accru.</div>
+        <div style="flex:1; background: white; border-radius: 28px; padding: 24px;"><i data-lucide="tree-pine" style="width:32px; height:32px; color:#C97E2C;"></i><strong> Environnemental</strong><br>Preuve de non-déforestation exigée par l’EUDR, incitation à préserver les forêts togolaises.</div>
       </div>
-      <div style="margin-top: 40px; background: #1E3A2F10; border-radius: 28px; padding: 20px; text-align: center;">
-        🎯 <i class="fas fa-hand-holding-heart"></i> ODD 1 (Fin de pauvreté) · ODD 2 (Faim zéro) · ODD 8 (Travail décent) · ODD 12 (Consommation responsable)
-      </div>
+      <div style="margin-top: 40px; background: #1E3A2F10; border-radius: 28px; padding: 20px; text-align: center;"><i data-lucide="target"></i> <i data-lucide="heart-handshake"></i> ODD 1 (Fin de pauvreté) · ODD 2 (Faim zéro) · ODD 8 (Travail décent) · ODD 12 (Consommation responsable)</div>
     </div>
   </section>
 
-  <!-- ÉQUIPE LaunchPad -->
   <section id="equipe">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-users"></i> L’équipe LaunchPad</h2>
-      <p class="section-sub">Quatre talents réunis pour la traçabilité agricole africaine.</p>
+      <h2 class="section-title"><i data-lucide="users"></i> L’équipe LaunchPad</h2>
+      <p class="section-sub">Quatre personnes réunies pour la traçabilité agricole africaine.</p>
       <div class="team-grid">
-        <div class="team-card"><div class="avatar"><i class="fas fa-user-tie fa-3x"></i></div><h3>Koffi A.</h3><p>Lead Blockchain & Smart Contract</p><small>Expert Polygon, architecture décentralisée</small></div>
-        <div class="team-card"><div class="avatar"><i class="fas fa-chalkboard-user fa-3x"></i></div><h3>Léa M.</h3><p>Chef de projet & Filière cacao</p><small>Connaissance terrain, coopératives togolaises</small></div>
-        <div class="team-card"><div class="avatar"><i class="fas fa-mobile-screen fa-3x"></i></div><h3>Samuel D.</h3><p>Fullstack & UX mobile</p><small>Application terrain et interfaces vérificateur</small></div>
-        <div class="team-card"><div class="avatar"><i class="fas fa-chart-simple fa-3x"></i></div><h3>Grace T.</h3><p>Data & Conformité EUDR</p><small>Certifications, impact ODD, documentation</small></div>
+        <div class="team-card"><div class="avatar"><i data-lucide="user"></i></div><h3>Renata ADELAN</h3><p>Lead</p><small>Etudiante en deuxième année de communication & multimedia à ISDB</small></div>
+        <div class="team-card"><div class="avatar"><i data-lucide="user"></i></div><h3>Yanfouom Victor KANFITINE</h3><p>Membre</p><small>Etudiant en première année de computer science à IAI TOGO</small></div>
+        <div class="team-card"><div class="avatar"><i data-lucide="user"></i></div><h3>Fozane ATCHA</h3><p>Membre</p><small>Etudiant en première année de génie logiciel à l'ESA</small></div>
+        <div class="team-card"><div class="avatar"><i data-lucide="user"></i></div><h3>Kondéabalo Calixte TAKARA</h3><p>Membre</p><small>Etudiant en deuxième année de génie logiciel à UK</small></div>
       </div>
       <p style="text-align: center; margin-top: 28px;"><em>Prêts à déployer ChainCacao dès 2027 avec les premières coopératives du plateau de Dayes.</em></p>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
-        <div>
-          <h3><i class="fas fa-leaf"></i> ChainCacao</h3>
-          <p>LaunchPad @ MIABE Hackathon 2026<br>Darollo Technologies Corporation</p>
-        </div>
-        <div>
-          <h4><i class="fas fa-envelope"></i> Contact</h4>
-          <p>team@chaincacao.io<br>
-          <i class="fas fa-globe"></i> www.miabehackathon.com<br>
-          <i class="fab fa-github"></i> github.com/launchpad-chaincacao</p>
-        </div>
-        <div>
-          <h4><i class="fas fa-file-alt"></i> Documentation Phase 1</h4>
-          <p>✅ Problème chiffré + EUDR<br>✅ Maquettes 4 acteurs<br>✅ Architecture blockchain (Polygon)<br>✅ Schéma & justification immuabilité</p>
-        </div>
+        <div><h3><img src="/logo.png" alt="logo" class="lo"> ChainCacao</h3><p>LaunchPad @ MIABE Hackathon 2026<br>Darollo Technologies Corporation</p></div>
+        <div><h4><i data-lucide="mail"></i> Contact</h4><p>team@chaincacao.io<br><i data-lucide="globe"></i> www.miabehackathon.com<br><i data-lucide="github"></i> github.com/launchpad-chaincacao</p></div>
+        <div><h4><i data-lucide="file-text"></i> Documentation Phase 1</h4><p><i data-lucide="check-circle"></i> Problème chiffré + EUDR<br><i data-lucide="check-circle"></i> Maquettes 4 acteurs<br><i data-lucide="check-circle"></i> Architecture blockchain (Polygon)<br><i data-lucide="check-circle"></i> Schéma & justification immuabilité</p></div>
       </div>
       <hr style="margin: 32px 0 16px; border-color:#4A6A5C;">
       <p style="text-align: center; font-size: 0.8rem;">© 2026 LaunchPad – ChainCacao. Solution développée pour la présélection MIABE HACKATHON 2026 – Togo.</p>
     </div>
   </footer>
 </main>
+
+<script>
+  // Initialisation des icônes Lucide
+  lucide.createIcons();
+
+  // ----- SMOOTH SCROLL JS (avec prise en compte du header fixe) -----
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    
+    // Fonction pour obtenir la hauteur du header (avec marge supplémentaire si besoin)
+    function getHeaderOffset() {
+      return header ? header.offsetHeight : 70;
+    }
+
+    // Fonction de défilement fluide vers un élément cible
+    function smoothScrollToElement(targetElement) {
+      if (!targetElement) return;
+      const offset = getHeaderOffset();
+      const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    // Gestion des clics sur tous les liens internes commençant par #
+    const allInternalLinks = document.querySelectorAll('a[href^="#"]');
+    
+    allInternalLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        const href = this.getAttribute('href');
+        // Ignorer les liens vides ou juste "#" (comme le bouton Démo)
+        if (href === "#" || href === "") {
+          // Pour le bouton démo, on ne fait rien (pas de cible)
+          event.preventDefault();
+          return;
+        }
+        
+        const targetId = href.substring(1); // enlève le #
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          event.preventDefault();  // Empêche le saut instantané par défaut
+          smoothScrollToElement(targetElement);
+          // Met à jour l'URL sans déclencher de saut (améliore l'expérience)
+          history.pushState(null, null, href);
+        }
+        // Si l'élément n'existe pas, on laisse le comportement normal (peu probable)
+      });
+    });
+
+    // Gestion du hash dans l'URL au chargement de la page (ex: ...#solution)
+    if (window.location.hash && window.location.hash.length > 1) {
+      const initialTargetId = window.location.hash.substring(1);
+      const initialTarget = document.getElementById(initialTargetId);
+      if (initialTarget) {
+        // Léger délai pour laisser le temps au rendu et au calcul du header
+        setTimeout(() => {
+          smoothScrollToElement(initialTarget);
+        }, 100);
+      }
+    }
+    
+    // Option supplémentaire : pour les boutons "Découvrir la solution" et "Architecture blockchain" 
+    // déjà inclus dans les liens génériques ci-dessus, mais on s'assure qu'ils utilisent bien le même mécanisme
+    // Aucun conflit attendu.
+  });
+</script>
 </body>
 </html>
