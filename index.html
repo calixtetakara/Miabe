@@ -19,7 +19,7 @@
       background: #E8F5E9;
       color: #2C2B28;
       line-height: 1.5;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
     }
 
     .container {
@@ -48,21 +48,7 @@
       align-items: center;
       gap: 12px;
     }
-    .logo-icon {
-      background: #F4C542;
-      border-radius: 60px;
-      padding: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .logo-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: #1B5E20;
-      stroke-width: 1.8;
-    }
-    .lo{
+    .lo {
       margin-bottom: -13px;
       width: 50px;
       height: 50px;
@@ -85,6 +71,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
     }
     .nav-links a:hover {
       color: #F4C542;
@@ -207,78 +194,222 @@
       stroke: #C97E2C;
       stroke-width: 1.7;
     }
-    .mockups-row {
+
+    /* Styles pour la galerie d'images - format portrait 383x852 */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 28px;
       margin-top: 32px;
     }
-    .mockup-card {
-      background: #FFFFFF;
+    .gallery-card {
+      background: white;
       border-radius: 32px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
       overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
       transition: transform 0.2s;
+      cursor: pointer;
       border: 1px solid #EFE2D3;
+      display: flex;
+      flex-direction: column;
     }
-    .mockup-header {
+    .gallery-card:hover {
+      transform: translateY(-6px);
+    }
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 393 / 852; /* ratio exact 393:852 */
+      object-fit: cover;
+      display: block;
+      background: #F2EEE7;
+    }
+    .gallery-title {
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
       background: #1E3A2F;
       color: white;
-      padding: 14px 18px;
-      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .mockup-body {
-      padding: 20px;
-      background: #FEFCF8;
+    .gallery-title svg {
+      width: 22px;
+      height: 22px;
+      stroke: #F4C542;
+      flex-shrink: 0;
     }
-    .mockup-screen {
-      background: #F2EEE7;
-      border-radius: 24px;
-      padding: 18px;
-      font-size: 0.85rem;
-      border: 1px solid #DDD2C2;
-    }
-    .mockup-screen svg {
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 4px;
-    }
-    button svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 6px;
-      vertical-align: middle;
-    }
-    .arch-diagram {
-      background: #2C2B28;
-      color: white;
-      border-radius: 40px;
-      padding: 32px 24px;
-      text-align: center;
-      margin: 32px 0;
-    }
-    .arch-flow {
-      display: flex;
-      flex-wrap: wrap;
+
+    /* Lightbox modale */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      text-align: center;
+    }
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 3px solid white;
+      object-fit: contain;
+    }
+    .lightbox-title {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: rgba(0,0,0,0.6);
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+    }
+    .close-btn {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      background: white;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1E3A2F;
+      color: white;
+      transition: 0.2s;
+    }
+    .close-btn:hover {
+      background: #C97E2C;
+      transform: scale(1.05);
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: none;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 50%;
+      transition: 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .nav-btn:hover {
+      background: #C97E2C;
+    }
+    .prev-btn {
+      left: -70px;
+    }
+    .next-btn {
+      right: -70px;
+    }
+    @media (max-width: 780px) {
+      .prev-btn { left: 10px; }
+      .next-btn { right: 10px; }
+      .close-btn { top: 10px; right: 10px; }
+      .lightbox-title { font-size: 1.2rem; margin-bottom: 10px; }
+    }
+
+     .arch-diagram {
+    background: #2C2B28;
+    color: white;
+    border-radius: 40px;
+    padding: 32px 24px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .actors-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+  .down-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 60px;  /* Ajustez selon la largeur des acteurs */
+    margin: 8px 0;
+    color: #F4C542;
+  }
+  .down-arrows i {
+    width: 24px;
+    height: 24px;
+  }
+  .blockchain-node {
+    background: #F4C54220;
+    backdrop-filter: blur(4px);
+    padding: 14px 24px;
+    border-radius: 60px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 16px auto;
+    width: fit-content;
+    border: 1px solid #F4C54240;
+  }
+  .badge {
+    background: #F4C542;
+    color: #2C2B28;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .to-qr {
+    margin: 8px 0;
+  }
+  .qr-node {
+    background: #F4C54220;
+    display: inline-flex;
+    margin: 0 auto;
+  }
+  .arch-node {
+    background: #F4C54220;
+    backdrop-filter: blur(4px);
+    padding: 10px 20px;
+    border-radius: 60px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  /* Ajustement responsive : sur petit écran, les flèches du bas se réduisent */
+  @media (max-width: 700px) {
+    .down-arrows {
+      gap: 30px;
+    }
+    .actors-row {
       gap: 12px;
     }
-    .arch-node {
-      background: #F4C54220;
-      backdrop-filter: blur(4px);
-      padding: 10px 20px;
-      border-radius: 60px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+  }
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -334,11 +465,6 @@
       .nav-links a { margin: 0 12px; }
       .section-title { font-size: 1.8rem; }
     }
-    .inline-icon {
-      display: inline-flex;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
   </style>
 </head>
 <body>
@@ -356,7 +482,7 @@
       <a href="#maquettes"><i data-lucide="smartphone"></i> Interfaces</a>
       <a href="#blockchain"><i data-lucide="link"></i> Blockchain</a>
       <a href="#equipe"><i data-lucide="users"></i> Équipe</a>
-      <a href="#" class="btn-outline-light"><i data-lucide="play"></i> Démo</a>
+      <a href="#" class="btn-outline-light" id="demoLink"><i data-lucide="play"></i> Démo</a>
     </div>
   </div>
 </header>
@@ -403,57 +529,16 @@
       </div>
       <div style="background: #E9DFD2; border-radius: 28px; padding: 28px; margin-top: 20px;">
         <h3><i data-lucide="database"></i> Pourquoi la blockchain plutôt qu’une base de données classique ?</h3>
-        <p>Une base de données centrale peut être modifiée par un administrateur ou compromise. La blockchain (Polygon) est un registre distribué et immuable : chaque transaction est horodatée, signée et partagée entre tous les acteurs. Un importateur européen ou un certificateur peut auditer directement la chaîne sans intermédiaire de confiance. L’immuabilité garantit qu’aucun acteur ne peut réécrire l’origine d’un lot après coup — un prérequis pour l’EUDR.</p>
+        <p>Une base de données centrale peut être modifiée par un administrateur ou compromise. La blockchain Polygon est un registre distribué et immuable : chaque transaction est horodatée, signée et partagée entre tous les acteurs. Un importateur européen ou un certificateur peut auditer directement la chaîne sans intermédiaire de confiance. L’immuabilité garantit qu’aucun acteur ne peut réécrire l’origine d’un lot après coup – un prérequis pour l’EUDR. Sur Polygon, chaque preuve coûte moins d’un centime, rendant la fraude économiquement absurde.</p>
       </div>
     </div>
   </section>
 
+  <!-- SECTION INTERFACES AVEC IMAGES AU FORMAT 383x852 -->
   <section id="maquettes">
     <div class="container">
       <h2 class="section-title"><i data-lucide="paintbrush"></i> Interfaces dédiées à chaque acteur</h2>
-      <p class="section-sub">Maquettes fonctionnelles (Phase 1) – Expérience mobile & web pour une adoption terrain.</p>
-      <div class="mockups-row">
-        <div class="mockup-card">
-          <div class="mockup-header"><i data-lucide="tractor"></i> Agriculteur / Coopérative</div>
-          <div class="mockup-body"><div class="mockup-screen">
-            <i data-lucide="plus-circle"></i> <strong>Nouveau lot</strong><br>
-            <i data-lucide="map-pin"></i> GPS: 6.221°N, 1.215°E<br>
-            <i data-lucide="weight"></i> Poids: 245 kg<br>
-            <i data-lucide="sprout"></i> Espèce: Forastero<br>
-            <i data-lucide="calendar"></i> Récolte: 12/04/2026<br>
-            <button style="background:#C97E2C; color:white; border:none; border-radius:40px; padding:6px 12px; margin-top:8px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="link"></i> Enregistrer sur blockchain →</button>
-            <div style="font-size:12px; margin-top:8px;"><i data-lucide="check-circle"></i> Hash: 0x7f3e...c91a</div>
-          </div></div>
-        </div>
-        <div class="mockup-card">
-          <div class="mockup-header"><i data-lucide="handshake"></i> Coopérative</div>
-          <div class="mockup-body"><div class="mockup-screen">
-            <i data-lucide="list"></i> <strong>Lots entrants</strong><br>
-            Lot #CC-1024 • 450 kg • GPS vérifié<br>
-            <span style="color:green;"><i data-lucide="arrow-left"></i> Transfert reçu de Kossi A.</span><br>
-            <i data-lucide="arrow-right"></i> Transférer à Transformateur<br>
-            <input placeholder="Adresse destinataire" style="width:100%; margin:6px 0;"><br>
-            <button style="background:#1E3A2F; color:white; border:none; border-radius:40px; padding:6px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="signature"></i> Signer & Transférer</button>
-          </div></div>
-        </div>
-        <div class="mockup-card">
-          <div class="mockup-header"><i data-lucide="search"></i> Vérificateur (Certification / EUDR)</div>
-          <div class="mockup-body"><div class="mockup-screen">
-            <i data-lucide="qrcode"></i> <strong>Scanner un QR lot</strong><br>
-            <div style="background:#DDD; width:80px; height:80px; margin:8px auto; display:flex; align-items:center; justify-content:center; border-radius:16px;"><i data-lucide="camera" style="width:32px; height:32px;"></i></div>
-            <p><strong>Lot #CC-0891</strong><br>Origine: Village de Badou<br>Parcours: Ferme → Coop → Export<br><i data-lucide="map-pin"></i> Preuve GPS: <i data-lucide="check-circle"></i> Non déforestée<br>Conforme EUDR: <i data-lucide="check-circle"></i></p>
-          </div></div>
-        </div>
-        <div class="mockup-card">
-          <div class="mockup-header"><i data-lucide="ship"></i> Exportateur</div>
-          <div class="mockup-body"><div class="mockup-screen">
-            <i data-lucide="file-check"></i> <strong>Certificat d’export</strong><br>
-            Lot finalisé: 12 tonnes – Certificat EUDR généré.<br>
-            <i data-lucide="download"></i> Télécharger rapport traçabilité<br>
-            <button style="background:#C97E2C; border-radius:40px; border:none; color:white; padding:6px 12px; margin-top:8px; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="qrcode"></i> Générer QR export →</button>
-          </div></div>
-        </div>
-      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
       <p class="section-sub" style="margin-top: 28px;"><i data-lucide="smartphone"></i> Application mobile terrain (React Native / PWA) : saisie hors-ligne, synchronisation blockchain via Polygon.</p>
     </div>
   </section>
@@ -463,19 +548,47 @@
       <h2 class="section-title"><i data-lucide="microchip"></i> Architecture blockchain : scalabilité & souveraineté</h2>
       <p class="section-sub">Choix technique, données on/off chain, et schéma fonctionnel.</p>
       <div class="arch-diagram">
-        <div class="arch-flow">
-          <span class="arch-node"><i data-lucide="tractor"></i> Agriculteur</span> <i data-lucide="arrow-right"></i>
-          <span class="arch-node"><i data-lucide="cube"></i> Polygon Blockchain</span> <i data-lucide="arrow-right"></i>
-          <span class="arch-node"><i data-lucide="building"></i> Coopérative</span> <i data-lucide="arrow-right"></i>
-          <span class="arch-node"><i data-lucide="factory"></i> Transformateur</span> <i data-lucide="arrow-right"></i>
-          <span class="arch-node"><i data-lucide="package"></i> Exportateur</span> <i data-lucide="arrow-right"></i>
-          <span class="arch-node"><i data-lucide="globe"></i> QR / EUDR</span>
-        </div>
-        <p style="margin-top: 24px;">Chaque transfert = transaction signée + mise à jour du registre immuable.</p>
-      </div>
+  <!-- Première ligne : les acteurs -->
+  <div class="actors-row">
+    <div class="arch-node"><i data-lucide="tractor"></i> Agriculteur</div>
+    <div class="arch-node"><i data-lucide="building"></i> Coopérative</div>
+    <div class="arch-node"><i data-lucide="factory"></i> Transformateur</div>
+    <div class="arch-node"><i data-lucide="package"></i> Exportateur</div>
+  </div>
+
+  <!-- Flèches descendantes -->
+  <div class="down-arrows">
+    <i data-lucide="arrow-down"></i>
+    <i data-lucide="arrow-down"></i>
+    <i data-lucide="arrow-down"></i>
+    <i data-lucide="arrow-down"></i>
+  </div>
+
+  <!-- Blockchain centrale -->
+  <div class="blockchain-node">
+    <i data-lucide="cube"></i> Polygon Blockchain <span class="badge">registre commun & immuable</span>
+  </div>
+
+  <!-- Flèche vers QR -->
+  <div class="to-qr">
+    <i data-lucide="arrow-down"></i>
+  </div>
+
+  <!-- QR / EUDR -->
+  <div class="arch-node qr-node">
+    <i data-lucide="globe"></i> QR code → lecture historique (EUDR)
+  </div>
+
+ <p style="margin-top: 32px; font-size: 0.95rem; opacity: 0.9; display: flex; flex-direction: column; gap: 8px;">
+  <span><i data-lucide="check-circle" style="width: 18px; height: 18px; display: inline-block; margin-right: 8px;"></i> Chaque acteur signe une transaction sur la blockchain (enregistrement ou transfert).</span>
+  <span><i data-lucide="check-circle" style="width: 18px; height: 18px; display: inline-block; margin-right: 8px;"></i> L’acheteur scanne un QR code qui interroge directement la blockchain – preuve infalsifiable pour l’EUDR.</span>
+</p>
+</div>
+
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 28px; margin: 32px 0;">
-        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="link" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="lock"></i> Données on-chain (Polygon)</h3><ul><li><i data-lucide="hash"></i> Hash unique du lot</li><li><i data-lucide="map-pin"></i> Coordonnées GPS</li><li><i data-lucide="weight"></i> Poids / espèce</li><li><i data-lucide="id-card"></i> Identifiant acteur + signature</li><li><i data-lucide="clock"></i> Horodatage transaction</li></ul></div>
-        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="cloud-upload" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="paperclip"></i> Données off-chain</h3><ul><li><i data-lucide="image"></i> Photos de récolte (IPFS)</li><li><i data-lucide="file-text"></i> Certificats PDF (Fairtrade)</li><li><i data-lucide="lock"></i> Données perso agriculteur (DB chiffrée)</li><li><i data-lucide="link"></i> Liée au hash on-chain</li></ul></div>
+        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="link" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="lock"></i> Données on-chain (Polygon)</h3><ul><li><i data-lucide="hash"></i> Hash unique du lot</li><li><i data-lucide="map-pin"></i> Coordonnées GPS</li><li><i data-lucide="id-card"></i> Identifiant acteur + signature</li><li><i data-lucide="clock"></i> Horodatage transaction</li></ul></div>
+        <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="cloud-upload" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="paperclip"></i> Données off-chain</h3><ul><li><i data-lucide="image"></i> Photos de récolte (IPFS)</li><li><i data-lucide="file-text"></i> Certificats PDF (Fairtrade)</li><li><i data-lucide="lock"></i> Données perso agriculteur (DB chiffrée)</li>
+          <li><i data-lucide="weight"></i> Poids / espèce</li><li><i data-lucide="link"></i> Liée au hash on-chain</li></ul></div>
         <div style="background: white; border-radius: 28px; padding: 24px;"><i data-lucide="trending-up" style="width:32px; height:32px; color:#C97E2C;"></i><h3><i data-lucide="zap"></i> Scalabilité & choix blockchain</h3><p><strong>Polygon (Proof-of-Stake sidechain)</strong> – coûts de transaction infimes (~0,001 $), finalité rapide, compatible Ethereum. Permet d’enregistrer des milliers de lots par jour sans frais prohibitifs. Alternative Hyperledger Fabric pour consortium si les coopératives préfèrent un réseau privé, mais Polygon assure transparence publique et interopérabilité avec les importateurs européens.</p></div>
       </div>
       <div style="background:#F4C54210; border-radius: 28px; padding: 24px;"><i data-lucide="shield" style="width:28px; height:28px;"></i> <strong>Pourquoi l’immuabilité est cruciale ?</strong> La modification d’une transaction passée nécessiterait de recalculer tous les blocs suivants et de contrôler plus de 50% du réseau – infaisable pour des acteurs malveillants. Ainsi, l’exportateur peut prouver sans conteste l’origine du lot devant les douanes européennes.</div>
@@ -521,73 +634,141 @@
   </footer>
 </main>
 
+<!-- Lightbox HTML -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <button class="close-btn" id="closeLightbox">✕</button>
+    <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+    <button class="nav-btn next-btn" id="nextBtn">›</button>
+    <div class="lightbox-title" id="lightboxTitle"></div>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="Agrandissement">
+  </div>
+</div>
+
 <script>
-  // Initialisation des icônes Lucide
+  // Initialisation des icônes
   lucide.createIcons();
 
-  // ----- SMOOTH SCROLL JS (avec prise en compte du header fixe) -----
+  // ----- SMOOTH SCROLL -----
   document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
-    
-    // Fonction pour obtenir la hauteur du header (avec marge supplémentaire si besoin)
-    function getHeaderOffset() {
-      return header ? header.offsetHeight : 70;
-    }
-
-    // Fonction de défilement fluide vers un élément cible
+    function getHeaderOffset() { return header ? header.offsetHeight : 70; }
     function smoothScrollToElement(targetElement) {
       if (!targetElement) return;
       const offset = getHeaderOffset();
       const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
     }
-
-    // Gestion des clics sur tous les liens internes commençant par #
-    const allInternalLinks = document.querySelectorAll('a[href^="#"]');
-    
-    allInternalLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        // Ignorer les liens vides ou juste "#" (comme le bouton Démo)
-        if (href === "#" || href === "") {
-          // Pour le bouton démo, on ne fait rien (pas de cible)
-          event.preventDefault();
-          return;
-        }
-        
-        const targetId = href.substring(1); // enlève le #
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          event.preventDefault();  // Empêche le saut instantané par défaut
-          smoothScrollToElement(targetElement);
-          // Met à jour l'URL sans déclencher de saut (améliore l'expérience)
+        if (href === "#" || href === "") { e.preventDefault(); return; }
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          smoothScrollToElement(target);
           history.pushState(null, null, href);
         }
-        // Si l'élément n'existe pas, on laisse le comportement normal (peu probable)
       });
     });
-
-    // Gestion du hash dans l'URL au chargement de la page (ex: ...#solution)
-    if (window.location.hash && window.location.hash.length > 1) {
-      const initialTargetId = window.location.hash.substring(1);
-      const initialTarget = document.getElementById(initialTargetId);
-      if (initialTarget) {
-        // Léger délai pour laisser le temps au rendu et au calcul du header
-        setTimeout(() => {
-          smoothScrollToElement(initialTarget);
-        }, 100);
-      }
+    if (window.location.hash) {
+      const target = document.getElementById(window.location.hash.substring(1));
+      if (target) setTimeout(() => smoothScrollToElement(target), 100);
     }
-    
-    // Option supplémentaire : pour les boutons "Découvrir la solution" et "Architecture blockchain" 
-    // déjà inclus dans les liens génériques ci-dessus, mais on s'assure qu'ils utilisent bien le même mécanisme
-    // Aucun conflit attendu.
+  });
+
+  // ----- IMAGES REELLES AU FORMAT 383x852 (remplacez les URLs par vos propres images) -----
+  const galleryItems = [
+     {
+    title: "Agriculteur / Coopérative",
+    icon: "tractor",
+    imageUrl: "images/agri.png",
+    thumbnail: "images/agri.png"
+    },
+    {
+      title: "Coopérative",
+      icon: "handshake",
+      imageUrl: "https://placehold.co/383x852/2E5A2F/white?text=Cooperative:+Gestion+des+transferts&font=montserrat",
+      thumbnail: "https://placehold.co/383x852/2E5A2F/white?text=Cooperative&font=montserrat"
+    },
+    {
+      title: "Vérificateur (Certification / EUDR)",
+      icon: "search",
+      imageUrl: "https://placehold.co/383x852/C97E2C/white?text=Verificateur:+Scan+QR+conformite+EUDR&font=montserrat",
+      thumbnail: "https://placehold.co/383x852/C97E2C/white?text=Verificateur&font=montserrat"
+    },
+    {
+      title: "Exportateur",
+      icon: "ship",
+      imageUrl: "https://placehold.co/383x852/5D3A1A/white?text=Exportateur:+Certificat+blockchain&font=montserrat",
+      thumbnail: "https://placehold.co/383x852/5D3A1A/white?text=Exportateur&font=montserrat"
+    }
+  ];
+
+  // Génération de la galerie
+  const galleryGrid = document.getElementById('galleryGrid');
+  galleryItems.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    card.setAttribute('data-index', index);
+    card.innerHTML = `
+      <div class="gallery-title">
+        <i data-lucide="${item.icon}"></i>
+        <span>${item.title}</span>
+      </div>
+      <img class="gallery-img" src="${item.thumbnail}" alt="${item.title}" loading="lazy">
+    `;
+    card.addEventListener('click', () => openLightbox(index));
+    galleryGrid.appendChild(card);
+  });
+  lucide.createIcons(); // pour les icônes des titres
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxContent();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightboxContent() {
+    const item = galleryItems[currentIndex];
+    lightboxImage.src = item.imageUrl;
+    lightboxTitle.textContent = item.title;
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    updateLightboxContent();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateLightboxContent();
+  }
+
+  document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+  document.getElementById('nextBtn').addEventListener('click', nextImage);
+  document.getElementById('prevBtn').addEventListener('click', prevImage);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
   });
 </script>
 </body>
